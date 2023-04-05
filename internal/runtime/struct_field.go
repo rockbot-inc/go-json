@@ -7,7 +7,7 @@ import (
 )
 
 func getTag(field reflect.StructField) string {
-	return field.Tag.Get("json")
+	return field.Tag.Get("go-json")
 }
 
 func IsIgnoredStructField(field reflect.StructField) bool {
