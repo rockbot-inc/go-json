@@ -7,7 +7,7 @@ import (
 )
 
 func getTag(field reflect.StructField) string {
-	return field.Tag.Get("go-json")
+	return field.Tag.Get("json")
 }
 
 func IsIgnoredStructField(field reflect.StructField) bool {
@@ -25,8 +25,10 @@ func IsIgnoredStructField(field reflect.StructField) bool {
 			return true
 		}
 	}
-	tag := getTag(field)
-	return tag == "-"
+	// ROC-8855: Just return false below because we don't want to ignore the empty JSON tag fields
+	// tag := getTag(field)
+	// return tag == "-"
+	return false
 }
 
 type StructTag struct {
